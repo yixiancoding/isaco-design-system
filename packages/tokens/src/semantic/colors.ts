@@ -129,22 +129,5 @@ export const semanticColors = {
   },
   "Component Color\nTokens": {
     "Secondary Button Background": "#ffffff"
-  },
-  "[Deprecated]": {
-    "[deprecated] Negative\n  Border Disabled": "#ff9187",
-    "[depreacted] Positive\n  Background Weak": "#f7fee7",
-    "[deprecated] Action\n  Text Weak": "#1c398e",
-    "[deprecated] Action\n  Border Focused-Active": "#193cb8",
-    "[deprecated] Action\n  Background Weak": "#eff6ff",
-    "[deprecated] Negative\n  Background Disabled": "#ffbab4",
-    "[deprecated] Negative\n  Text Disabled": "#ff9187",
-    "[depreacted] Negative\n  Background Weak": "#ffeeed",
-    "[deprecated] Negative\n  Icon Disabled": "#ff9187",
-    "[deprecated] Caution\n  Icon Medium": "#f54900",
-    "[deprecated] Caution\n  Text": "#ca3500",
-    "[deprecated] Positive\n  Background Disabled": "#bbf451",
-    "[deprecated] Positive\n  Text Disabled": "#bbf451",
-    "[deprecated] Positive\n  Icon Disabled": "#bbf451",
-    "[deprecated] Positive\n  Border Disabled": "#bbf451"
   }
 } as const
