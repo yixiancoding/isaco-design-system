@@ -90,40 +90,5 @@ export const colorPrimitives = {
   },
   "Brand logo": {
     "Logo\nblaze": "#ff6900"
-  },
-  "[depreacted]\nOpacity": {
-    "Orange 50-10": "#fa670080",
-    "Orange 50-25": "#fa670040"
-  },
-  "[depreacted]\nPink": {
-    "Pink": "#ff3838"
-  },
-  "[depricated]\nSlate": {
-    "Slate98": "#f9fafb",
-    "Slate95": "#f0f2f5",
-    "Slate90": "#e6eaef",
-    "Slate80": "#c8d1da",
-    "Slate70": "#a9b7c6",
-    "Slate60": "#8a9db2",
-    "Slate50": "#6c849e",
-    "Slate40": "#53687e",
-    "Slate30": "#3d4c5c",
-    "Slate20": "#2d3844",
-    "Slate15": "#1e262e",
-    "Slate10": "#14191f"
-  },
-  "[depricated]\nPurple": {
-    "Purple 98": "#fbf7fd",
-    "Purple 95": "#f6eefb",
-    "Purple 90": "#eedef8",
-    "Purple 80": "#e1c5f2",
-    "Purple 70": "#cb9be9",
-    "Purple 60": "#b97ae1",
-    "Purple 50": "#a858da",
-    "Purple 40": "#9432d1",
-    "Purple 30": "#7525a7",
-    "Purple 20": "#581c7d",
-    "Purple 10": "#3b1353",
-    "Purple 15": "#1d092a"
   }
 } as const
