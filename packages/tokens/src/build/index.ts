@@ -9,7 +9,7 @@ async function buildTokens() {
   console.log('🔨 Building tokens...\n')
 
   // Dynamically import tokens
-  const { semantic: semanticColors } = await import('../semantic/colors')
+  const { semanticColors } = await import('../semantic/colors')
   const { semanticTypography } = await import('../semantic/typography')
   const { semanticSpacing } = await import('../semantic/spacing')
 

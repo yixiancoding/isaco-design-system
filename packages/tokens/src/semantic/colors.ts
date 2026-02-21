@@ -1,0 +1,150 @@
+import { colorPrimitives } from '../primitives/colors'
+
+export const semanticColors = {
+  "Admin Action": {
+    "Admin\nAction Background": "#1447e6",
+    "Admin\nAction Background Hover": "#1c398e",
+    "Admin\nAction Background Pressed": "#132767",
+    "Admin\nAction Background Weak Hover": "#eff6ff",
+    "Admin\nAction Background Weak Pressed": "#dbeafe",
+    "Admin\nAction Text": "#1447e6",
+    "Admin\nAction Text Hover": "#193cb8",
+    "Admin\nAction Text Pressed": "#132767",
+    "Admin\nAction Icon": "#1447e6",
+    "Admin\nAction Icon Hover": "#193cb8",
+    "Admin\nAction Icon Pressed": "#132767",
+    "Admin\nAction Text Inverse": "#ffffff",
+    "Admin\nAction Icon Inverse": "#ffffff",
+    "Admin\nAction Border Inverse": "#ffffff",
+    "Admin\nAction Border": "#1447e6",
+    "Admin\nAction Border Hover": "#193cb8",
+    "Admin\nAction Border Pressed": "#1c398e",
+    "Admin\nAction Border Weak": "#51a2ff",
+    "🚀 Admin\nAction Container Hover": "#1447e61a"
+  },
+  "Consumer\nAction": {
+    "Consumer Action Background": "#fa6700",
+    "Consumer Action Background\nHover": "#f54900",
+    "Consumer Action Background\nPressed": "#ca3500",
+    "Consumer Action Border": "#fa6700",
+    "Consumer Action Border Hover": "#f54900",
+    "Consumer Action Border\nPressed": "#ca3500",
+    "Consumer Action Border Weak": "#f8944c",
+    "Consumer Action Text": "#fa6700",
+    "Consumer Action Text Hover": "#f54900",
+    "Consumer Action Text Pressed": "#ca3500",
+    "Consumer Action Background\nWeak Hover": "#fff7ed",
+    "Consumer Action Background\nWeak Pressed": "#ffedd4",
+    "Consumer Action Icon": "#fa6700",
+    "Consumer Action Icon Hover": "#f54900",
+    "Consumer Action Icon Pressed": "#ca3500"
+  },
+  "Neutral": {
+    "Neutral\nBackground": "#ffffff",
+    "Neutral\nBackground Disabled": "#e5e7eb",
+    "Neutral\nBackground Weak": "#f9fafb",
+    "Neutral\nBackground Weak Disabled": "#f3f4f6",
+    "Neutral\nBackground Medium": "#f3f4f6",
+    "Neutral\nBackground Strong": "#e5e7eb",
+    "Neutral\nBackground Strongest": "#6a7282",
+    "Neutral\nBackground Inverse": "#1e2939",
+    "Neutral Text": "#101828",
+    "Neutral Text\nMedium": "#4a5565",
+    "[audit]\nNeutral Text Weak": "#99a1af",
+    "Neutral Text\nDisabled": "#99a1af",
+    "Neutral Icon": "#101828",
+    "Neutral Icon\nMedium": "#4a5565",
+    "Neutral Icon\nWeak": "#99a1af",
+    "Neutral Icon\nDisabled": "#99a1af",
+    "Neutral\nBorder": "#d1d5dc",
+    "Neutral Border\nDisabled": "#99a1af",
+    "Neutral Border\nMedium": "#99a1af",
+    "Neutral Text\nInverse": "#ffffff",
+    "Neutral Icon\nInverse": "#ffffff"
+  },
+  "Negative": {
+    "Negative\nBackground": "#e60707",
+    "Negative\nBackground Hover": "#cf0f0f",
+    "Negative\nBackground Pressed": "#b40101",
+    "Negative\nBackground Weak": "#fdd7d3",
+    "Negative\nBackground Weak Hover": "#ffeeed",
+    "Negative\nBackground Weak Pressed": "#fdd7d3",
+    "Negative\nText": "#e60707",
+    "Negative Text\nHover": "#cf0f0f",
+    "Negative Text\nPressed": "#b40101",
+    "Negative\nIcon": "#e60707",
+    "Negative Icon\nHover": "#cf0f0f",
+    "Negative Icon\nPressed": "#b40101",
+    "Negative\nBorder": "#e60707",
+    "Negative\nBorder Hover": "#cf0f0f",
+    "Negative\nBorder Pressed": "#b40101"
+  },
+  "Positive": {
+    "Positive\nBackground": "#5c9f03",
+    "Positive\nBackground Hover": "#3c6300",
+    "Positive\nBackground Pressed": "#264400",
+    "Positive\nBackground Medium": "#bbf451",
+    "Positive\nBackground Weak": "#ecfcca",
+    "Positive\nBackground Weak Hover": "#f7fee7",
+    "Positive\nBackground Weak Pressed": "#d8f999",
+    "Positive\nText": "#3c6300",
+    "Positive Text\nHover": "#264400",
+    "Positive Text\nPressed": "#22330c",
+    "Positive\nIcon": "#3c6300",
+    "Positive Icon\nHover": "#264400",
+    "Positive Icon\nPressed": "#22330c",
+    "Positive\nBorder": "#3c6300",
+    "Positive\nBorder Hover": "#264400",
+    "Positive\nBorder Pressed": "#22330c"
+  },
+  "Info": {
+    "Info Background": "#51a2ff",
+    "Info Background\nMedium": "#8ec5ff",
+    "Info Background\nWeak": "#dbeafe",
+    "Info Border": "#1447e6",
+    "Info Text": "#1447e6",
+    "Info Icon": "#1447e6"
+  },
+  "Caution": {
+    "Caution\nBackground": "#ffec44",
+    "Caution\nBackground Weak": "#fff9c2",
+    "Caution\nBorder": "#fff498",
+    "Caution Icon": "#9e8f0b",
+    "Caution Text": "#9e8f0b"
+  },
+  "Accent": {
+    "Accent\nBackground": "#fa6700",
+    "Accent\nBackground Medium": "#ffd6a8",
+    "Accent\nBackground Weak": "#fff7ed",
+    "Accent Text\nMedium": "#9f2d00",
+    "Accent Border\nWeak": "#ffb86a"
+  },
+  "Live": {
+    "Live Background": "#ff3838",
+    "Live Text": "#ffffff"
+  },
+  "Brand": {
+    "Brand\nBackground": "#1c398e",
+    "Brand Background\nStrong": "#001f4d"
+  },
+  "Component Color\nTokens": {
+    "Secondary Button Background": "#ffffff"
+  },
+  "[Deprecated]": {
+    "[deprecated] Negative\n  Border Disabled": "#ff9187",
+    "[depreacted] Positive\n  Background Weak": "#f7fee7",
+    "[deprecated] Action\n  Text Weak": "#1c398e",
+    "[deprecated] Action\n  Border Focused-Active": "#193cb8",
+    "[deprecated] Action\n  Background Weak": "#eff6ff",
+    "[deprecated] Negative\n  Background Disabled": "#ffbab4",
+    "[deprecated] Negative\n  Text Disabled": "#ff9187",
+    "[depreacted] Negative\n  Background Weak": "#ffeeed",
+    "[deprecated] Negative\n  Icon Disabled": "#ff9187",
+    "[deprecated] Caution\n  Icon Medium": "#f54900",
+    "[deprecated] Caution\n  Text": "#ca3500",
+    "[deprecated] Positive\n  Background Disabled": "#bbf451",
+    "[deprecated] Positive\n  Text Disabled": "#bbf451",
+    "[deprecated] Positive\n  Icon Disabled": "#bbf451",
+    "[deprecated] Positive\n  Border Disabled": "#bbf451"
+  }
+} as const

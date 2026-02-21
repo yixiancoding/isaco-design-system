@@ -20,6 +20,7 @@
   ],
   "scripts": {
     "extract": "tsx scripts/extract-figma.ts",
+    "process-console": "tsx scripts/process-console-output.ts",
     "build": "pnpm run build:tokens && pnpm run build:package",
     "build:tokens": "tsx src/build/index.ts",
     "build:package": "tsup src/index.ts --format cjs,esm --dts",
