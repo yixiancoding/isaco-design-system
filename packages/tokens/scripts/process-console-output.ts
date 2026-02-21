@@ -104,8 +104,8 @@ function processConsoleOutput(data: ConsoleOutput) {
     const variable = variables[varId]
     if (!variable) continue
 
-    // Skip deprecated variables
-    if (variable.name.toLowerCase().includes('[deprecated]')) continue
+    // Skip deprecated variables (including typos like [depreacted])
+    if (variable.name.toLowerCase().includes('deprec')) continue
 
     const rawValue = variable.valuesByMode[defaultModeId]
     const value = resolveValue(rawValue, variables, defaultModeId)
@@ -174,8 +174,8 @@ function processConsoleOutput(data: ConsoleOutput) {
       const variable = variables[varId]
       if (!variable || variable.resolvedType !== 'COLOR') continue
 
-      // Skip deprecated variables
-      if (variable.name.toLowerCase().includes('[deprecated]')) continue
+      // Skip deprecated variables (including typos like [depreacted])
+      if (variable.name.toLowerCase().includes('deprec')) continue
 
       const rawValue = variable.valuesByMode[webTokensModeId]
       const value = resolveValue(rawValue, variables, webTokensModeId)
