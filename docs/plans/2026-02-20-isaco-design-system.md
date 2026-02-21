@@ -10,6 +10,21 @@
 
 ---
 
+## Session 1 Progress (2026-02-20)
+
+**✅ Completed:**
+- Tasks 1-5: Monorepo setup, token extraction, build pipeline
+- Extracted 475 color tokens from Figma (primitives + semantic)
+- Console-based extraction workflow (manual copy-paste from Figma plugin console)
+- Filtered out 15+ deprecated tokens (multiple typo variations)
+
+**⏭️ Next Session:**
+1. **Define Typography & Spacing Tokens in Figma** - Currently only color tokens exist
+2. **Set Up OAuth 2.0 for Figma API** - Replace manual console extraction with automated API access
+3. **Continue with Tasks 6-8** - Components package, utilities, Button component
+
+---
+
 ## Task 1: Initialize Monorepo Structure
 
 **Files:**
@@ -743,38 +758,48 @@ git commit -m "feat(tokens): add token build pipeline for CSS vars, flat JSON, a
 
 ---
 
-## Task 5: Extract Tokens from Figma (Manual Step)
+## Task 5: Extract Tokens from Figma
 
-**Prerequisites:**
-- Figma access token (create at figma.com/developers)
-- Access to the Figma file
+**Status:** ✅ Completed (Console-based extraction method)
 
-**Step 1: Create .env file**
+**What was implemented:**
+- Console-based extraction script (`scripts/extract-from-console.js`)
+- Processing script (`scripts/process-console-output.ts`)
+- Cross-mode variable alias resolution
+- Deprecated token filtering (handles typos: deprecated, depreacted, depricated)
+- Generated 475 color tokens (primitives + semantic)
+- Built CSS variables, Tailwind preset, and flat JSON outputs
+
+**Current limitation:**
+- Manual copy-paste workflow from Figma plugin console
+- Organization plan lacks `file_variables:read` scope for Personal Access Tokens
+- Only color tokens extracted (typography and spacing not yet defined in Figma)
+
+**Next session - Automate with OAuth:**
+1. Set up OAuth 2.0 application in Figma
+2. Implement OAuth flow to get `file_variables:read` scope
+3. Replace console extraction with automated API extraction
+4. Define typography and spacing tokens in Figma
+5. Update extraction script to handle all token types
+
+**Step 1: Run console extraction (current method)**
+
+1. Open Figma file in Figma Desktop
+2. Right-click → Plugins → Development → Open Console
+3. Paste contents of `scripts/extract-from-console.js` and press Enter
+4. Copy the JSON output
+5. Paste into `figma-variables.json`
+
+**Step 2: Process extracted tokens**
 
 ```bash
 cd packages/tokens
-cp .env.example .env
-# Edit .env and add your FIGMA_ACCESS_TOKEN
+pnpm run process-console
 ```
 
-**Step 2: Run extraction**
+Expected: TypeScript files created in `src/primitives/colors.ts` and `src/semantic/colors.ts`
 
-```bash
-pnpm extract
-```
-
-Expected: TypeScript files created in `src/primitives/` and `src/semantic/`
-
-**Step 3: Verify extracted files**
-
-```bash
-ls -la src/primitives/
-ls -la src/semantic/
-```
-
-Expected: `colors.ts`, `typography.ts`, `spacing.ts` in both directories
-
-**Step 4: Build tokens**
+**Step 3: Build tokens**
 
 ```bash
 pnpm build
@@ -783,7 +808,7 @@ cd ../..
 
 Expected: `dist/` folder created with `variables.css`, `tokens-flat.json`, `tailwind.preset.js`
 
-**Step 5: Commit extracted tokens**
+**Step 4: Commit extracted tokens**
 
 ```bash
 git add packages/tokens
