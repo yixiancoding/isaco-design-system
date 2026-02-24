@@ -1,5 +1,5 @@
 import type { Preview } from '@storybook/react'
-import '@isaco/tokens/css'
+import '/Users/isali/projects/isaco-design-system/packages/tokens/dist/variables.css'
 import '../styles.css'
 
 const preview: Preview = {
