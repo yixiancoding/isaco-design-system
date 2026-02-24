@@ -1,5 +1,15 @@
 import * as fs from 'fs'
 
+function sanitizeVariableName(name: string): string {
+  return name
+    .replace(/\n/g, '-')  // Replace newlines with hyphens
+    .replace(/\s+/g, '-')  // Replace spaces with hyphens
+    .replace(/[^\w-]/g, '')  // Remove special chars except word chars and hyphens
+    .replace(/-+/g, '-')  // Collapse multiple hyphens
+    .replace(/^-|-$/g, '')  // Remove leading/trailing hyphens
+    .toLowerCase()
+}
+
 export function generateTailwindPreset(tokens: Record<string, any>): string {
   const config = {
     theme: {
@@ -11,11 +21,13 @@ export function generateTailwindPreset(tokens: Record<string, any>): string {
     const result: Record<string, any> = {}
 
     Object.entries(obj).forEach(([key, value]) => {
+      const sanitizedKey = sanitizeVariableName(key)
+
       if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
-        result[key] = traverse(value, [...prefix, key], isColor || prefix[0] === 'color')
+        result[sanitizedKey] = traverse(value, [...prefix, sanitizedKey], isColor || prefix[0] === 'color')
       } else {
-        const varName = `--${[...prefix, key].join('-')}`
-        result[key] = `var(${varName})`
+        const varName = `--${[...prefix, sanitizedKey].join('-')}`
+        result[sanitizedKey] = `var(${varName})`
       }
     })
 
