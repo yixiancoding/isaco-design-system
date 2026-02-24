@@ -1,5 +1,5 @@
 import type { Config } from 'tailwindcss'
-import isacoPreset from '@isaco/tokens/tailwind'
+import isacoPreset from '../../packages/tokens/dist/tailwind.preset.js'
 
 const config: Config = {
   presets: [isacoPreset],

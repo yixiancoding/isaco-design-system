@@ -8,9 +8,9 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: 'bg-[var(--color-consumer-action-consumer-action-background)] text-white hover:bg-[var(--color-consumer-action-consumer-action-background-hover)]',
-        secondary: 'bg-[var(--color-component-color-tokens-secondary-button-background)] text-[var(--color-neutral-neutral-text)] border border-[var(--color-neutral-neutral-border)] hover:bg-[var(--color-neutral-neutral-background-weak)]',
-        outline: 'border border-[var(--color-neutral-neutral-border)] bg-transparent text-[var(--color-neutral-neutral-text)] hover:bg-[var(--color-neutral-neutral-background-weak)]',
+        primary: 'bg-consumer-action-consumer-action-background text-white hover:bg-consumer-action-consumer-action-background-hover',
+        secondary: 'bg-component-color-tokens-secondary-button-background text-neutral-neutral-text border border-neutral-neutral-border hover:bg-neutral-neutral-background-weak',
+        outline: 'border border-neutral-neutral-border bg-transparent text-neutral-neutral-text hover:bg-neutral-neutral-background-weak',
       },
       size: {
         sm: 'h-9 px-3 text-sm',
