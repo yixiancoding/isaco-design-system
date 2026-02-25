@@ -4,7 +4,7 @@ export * from './primitives/typography'
 export * from './primitives/spacing'
 export * from './primitives/radius'
 
-// Export semantic tokens
+// Export semantic tokens (includes semanticColors + semanticColorsDark)
 export * from './semantic/colors'
 export * from './semantic/typography'
 export * from './semantic/spacing'
