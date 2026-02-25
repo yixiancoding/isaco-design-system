@@ -17,17 +17,23 @@ export function generateTailwindPreset(tokens: Record<string, any>): string {
     },
   }
 
-  function traverse(obj: any, prefix: string[] = [], isColor = false): Record<string, any> {
+  function traverse(obj: any, prefix: string[] = [], isColor = false, isSpacing = false): Record<string, any> {
     const result: Record<string, any> = {}
 
     Object.entries(obj).forEach(([key, value]) => {
       const sanitizedKey = sanitizeVariableName(key)
 
       if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
-        result[sanitizedKey] = traverse(value, [...prefix, sanitizedKey], isColor || prefix[0] === 'color')
+        result[sanitizedKey] = traverse(value, [...prefix, sanitizedKey], isColor || prefix[0] === 'color', isSpacing || prefix[0] === 'spacing')
       } else {
-        const varName = `--${[...prefix, sanitizedKey].join('-')}`
-        result[sanitizedKey] = `var(${varName})`
+        // For spacing, use the actual value directly (already in rem)
+        // For colors, use CSS variable references
+        if (isSpacing) {
+          result[sanitizedKey] = value
+        } else {
+          const varName = `--${[...prefix, sanitizedKey].join('-')}`
+          result[sanitizedKey] = `var(${varName})`
+        }
       }
     })
 
@@ -37,13 +43,13 @@ export function generateTailwindPreset(tokens: Record<string, any>): string {
   // Process tokens into Tailwind config
   Object.entries(tokens).forEach(([category, values]) => {
     if (category === 'color') {
-      config.theme.extend.colors = traverse(values as any, ['color'], true)
+      config.theme.extend.colors = traverse(values as any, ['color'], true, false)
     } else if (category === 'spacing') {
-      config.theme.extend.spacing = traverse(values as any, ['spacing'])
+      config.theme.extend.spacing = traverse(values as any, ['spacing'], false, true)
     } else if (category === 'fontSize') {
-      config.theme.extend.fontSize = traverse(values as any, ['font-size'])
+      config.theme.extend.fontSize = traverse(values as any, ['font-size'], false, false)
     } else if (category === 'fontWeight') {
-      config.theme.extend.fontWeight = traverse(values as any, ['font-weight'])
+      config.theme.extend.fontWeight = traverse(values as any, ['font-weight'], false, false)
     }
   })
 

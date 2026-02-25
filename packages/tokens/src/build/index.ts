@@ -12,12 +12,20 @@ async function buildTokens() {
   const { semanticColors } = await import('../semantic/colors')
   const { semanticTypography } = await import('../semantic/typography')
   const { semanticSpacing } = await import('../semantic/spacing')
+  const { spacingPrimitives } = await import('../primitives/spacing')
 
-  // Combine all semantic tokens
+  // Combine all semantic tokens for CSS variables
   const allTokens = {
     color: semanticColors,
     ...semanticTypography,
     ...semanticSpacing,
+  }
+
+  // For Tailwind, include primitive spacing scale
+  const tailwindTokens = {
+    color: semanticColors,
+    spacing: spacingPrimitives.spacing,
+    ...semanticTypography,
   }
 
   // Create dist directory
@@ -34,8 +42,8 @@ async function buildTokens() {
   const flatTokens = generateFlatTokens(allTokens)
   writeFlatTokensFile(flatTokens, path.join(distDir, 'tokens-flat.json'))
 
-  // Generate Tailwind preset
-  const tailwindPreset = generateTailwindPreset(allTokens)
+  // Generate Tailwind preset (using primitive spacing scale)
+  const tailwindPreset = generateTailwindPreset(tailwindTokens)
   writeTailwindPresetFile(tailwindPreset, path.join(distDir, 'tailwind.preset.js'))
 
   console.log('\n✅ Token build complete!')
