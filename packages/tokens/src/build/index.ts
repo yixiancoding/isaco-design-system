@@ -12,20 +12,26 @@ async function buildTokens() {
   const { semanticColors } = await import('../semantic/colors')
   const { semanticTypography } = await import('../semantic/typography')
   const { semanticSpacing } = await import('../semantic/spacing')
+  const { semanticRadius } = await import('../semantic/radius')
   const { spacingPrimitives } = await import('../primitives/spacing')
+  const { radiusPrimitives } = await import('../primitives/radius')
+  const { typographyPrimitives } = await import('../primitives/typography')
 
   // Combine all semantic tokens for CSS variables
   const allTokens = {
     color: semanticColors,
     ...semanticTypography,
     ...semanticSpacing,
+    ...semanticRadius,
   }
 
-  // For Tailwind, include primitive spacing scale
+  // For Tailwind, include primitive spacing and radius scales
   const tailwindTokens = {
     color: semanticColors,
     spacing: spacingPrimitives.spacing,
-    ...semanticTypography,
+    borderRadius: radiusPrimitives.radius,
+    fontFamily: typographyPrimitives.fontFamily,
+    fontWeight: typographyPrimitives.fontWeight,
   }
 
   // Create dist directory

@@ -17,18 +17,18 @@ export function generateTailwindPreset(tokens: Record<string, any>): string {
     },
   }
 
-  function traverse(obj: any, prefix: string[] = [], isColor = false, isSpacing = false): Record<string, any> {
+  function traverse(obj: any, prefix: string[] = [], useDirectValue = false): Record<string, any> {
     const result: Record<string, any> = {}
 
     Object.entries(obj).forEach(([key, value]) => {
       const sanitizedKey = sanitizeVariableName(key)
 
       if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
-        result[sanitizedKey] = traverse(value, [...prefix, sanitizedKey], isColor || prefix[0] === 'color', isSpacing || prefix[0] === 'spacing')
+        result[sanitizedKey] = traverse(value, [...prefix, sanitizedKey], useDirectValue)
       } else {
-        // For spacing, use the actual value directly (already in rem)
-        // For colors, use CSS variable references
-        if (isSpacing) {
+        // For spacing, borderRadius, fontFamily, fontWeight: use actual values
+        // For colors: use CSS variable references
+        if (useDirectValue) {
           result[sanitizedKey] = value
         } else {
           const varName = `--${[...prefix, sanitizedKey].join('-')}`
@@ -43,13 +43,17 @@ export function generateTailwindPreset(tokens: Record<string, any>): string {
   // Process tokens into Tailwind config
   Object.entries(tokens).forEach(([category, values]) => {
     if (category === 'color') {
-      config.theme.extend.colors = traverse(values as any, ['color'], true, false)
+      config.theme.extend.colors = traverse(values as any, ['color'], false)
     } else if (category === 'spacing') {
-      config.theme.extend.spacing = traverse(values as any, ['spacing'], false, true)
-    } else if (category === 'fontSize') {
-      config.theme.extend.fontSize = traverse(values as any, ['font-size'], false, false)
+      config.theme.extend.spacing = traverse(values as any, ['spacing'], true)
+    } else if (category === 'borderRadius') {
+      config.theme.extend.borderRadius = traverse(values as any, ['border-radius'], true)
+    } else if (category === 'fontFamily') {
+      config.theme.extend.fontFamily = traverse(values as any, ['font-family'], true)
     } else if (category === 'fontWeight') {
-      config.theme.extend.fontWeight = traverse(values as any, ['font-weight'], false, false)
+      config.theme.extend.fontWeight = traverse(values as any, ['font-weight'], true)
+    } else if (category === 'fontSize') {
+      config.theme.extend.fontSize = traverse(values as any, ['font-size'], false)
     }
   })
 
